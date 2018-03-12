@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!--BEGIN event-header-->
+<section class="event-header" style="background-color: #7586D2;">
+    <div class="container">
+        <div class="event-header__box">
+            <h1 class="event-header__title">{{ event.name }}</h1>
+            <div class="event-header__description">{{ event.description }}
+            </div>
+            <div class="event-header__details">
+                <div class="event-header__details-left">
+                    <time datetime="2018-06-10" class="event-header__date">{{ event.date.format('Y-m-d') }}</time>
+                </div>
+                <div class="event-header__details-right">
+                    <a class="event-header__location go-to-block">Mercure Congress Hall</a>
+                </div>
+            </div>
+            <div class="event-header__action">
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--END event-header-->
+<!--END event-buy-mob-->    <!--BEGIN event-description-->
+<section class="event-description">
+    <div class="container container--sm">
+        <div class="event-description__text static-styles">
+            <p>PHP fwdays'18 - найбільша в Україні конференція для PHP розробників, а також для тих, хто прагне дізнатися про широкий спектр нових технологій, виявити останні тенденції.<p/>
+            <p>На PHP fwdays'18 відомі українські та міжнародні експерти у сфері PHP зустрічаються з аудиторією: користувачами і розробниками, архітекторами, тімлідами і т.д. Кожен спікер проходить декілька етапів відбору та репетицій, таким чином гарантується максимально можливий рівень програми. А зараз у кожного з вас є нагода поділитися своїм практичним досвідом, адже <strong><a href="https://docs.google.com/forms/d/e/1FAIpQLScdhNr_BcwYc65S7Be63egXfNjOvMqHICndofKQazbz916ZvQ/viewform">Call for papers</a></strong> відкритий до 8 квітня 2018 року.</p>
+            <p>Конференція проводиться у 2 потоки та секції воркшопів, також ви зможете поспілкуватися з експертами в Speakers 'Corner. Доповіді проходять українською, англійською та  російською мовами.<p/>
+            <p>Перегляньте, як пройшла конференція в 2017 році, а також минулорічну програму.</br>
+            <p><center><iframe width="560" height="315" src="https://www.youtube.com/embed/DWc9JuTMXnM" frameborder="0" allowfullscreen></iframe></center></p>
+        </div>
+    </div>
+</section>
+<!--END event-description-->
+<!--BEGIN speakers-->
+<section id="speakers-event" class="speakers">
+    <div class="container">
+        <div class="speakers__box">
+            <h2 class="h2 speakers__title">Спікери</h2>
+            <ul class="speakers__items">
+                {% for speaker in speakers %}
+
+                    <li class="speakers__item speaker-card">
+                        <div class="speaker-card__box">
+                            <a class="speaker-card__top">
+                                <div class="speaker-card__photo">
+                                    <img class="speaker-card__img" src="/uploads/images/speakers/{{ speaker.image }}" alt="">
+                                </div>
+                                <span class="speaker-card__name">{{ speaker.name }}</span>
+                                <span class="speaker-card__position">{{ speaker.position }}</span>
+                            </a>
+                            <div class="speaker-card__bottom">
+                                <a href="{{ path('event', {'id' : speaker.event.id}) }}" class="speaker-card__report">{{ speaker.event }}</a>
+                                <div class="like-btn speaker-card__likes">
+                                    <a data-remodal-target="modal-signin" href="{{ path('event', {'id' : speaker.event.id}) }}" class="like-btn__action">Хочу послухати</a>
+                                    <div class="like-btn__amount" data-review="whats-new-in-xdebug">
+                                        <i class="icon-like like-btn__icon"></i>5
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</section>
+<!--END speakers-->
+<!--BEGIN program-->
+<!--END program-->
+
+<!--BEGIN PROGRAM-->
+<div class="program">
+
+    <!--BEGIN program-->
+    <section id="program-event" class="schedule">
+        <div class="container schedule__container">
+            <h2 class="h2 schedule__title">Програма</h2>
+            <p><em>Програма може змінитися</em></p>
+
+            <!--BEGIN PROGRAM BODY-->
+            <div class="program-body">
+
+                <!--BEGIN PROGRAM ROW-PAUSE-->
+                {% for event in events %}
+                    <div class="program-body__tr program-body__tr--pause">
+
+                        <div class="program-body__td program-body__td--time">{{ event.start.format('d.m.y H:i') }}</div>
+
+                        <div class="program-body__td">
+                            <div class="event-outside">
+                                <div class="event-outside__title"><a href=" {{  path('event', {'id' : event.id}) }} ">{{ event.name }}</a></div>
+                                <div class="event-outside__duration">{{ event.speaker }}</div>
+                            </div>
+                            <div class="event-outside__duration">Тривалiсть {{ event.durability }} хв.</div>
+                            <div class="event-outside__duration">{{ event.room }}</div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+                <!--END PROGRAM ROW-PAUSE-->
+            </div>
+            <!--END PROGRAM BODY-->
+
+        </div>
+        <!--END PROGRAM-->
+</div>
+</section>
+<!--END program-->
+
+<!--BEGIN location-->
+<section id="location-event" class="location">
+    <div class="container container--sm">
+        <h2 class="h2 location__title">Місце проведення</h2>
+        <div class="location__description">
+            Kyiv, Mercure Congress Hall
+        </div>
+        <br>
+    </div>
+</section>
+<!--END location-->
+
+<!--BEGIN partners-->
+<section id="partners-event" class="partners">
+    <div class="container container--sm">
+        <div class="partners__box">
+            {% if platinumSponsors %}
+                <div class="partners__title">Платинові Партнери</div>
+                <ul class="partners__items">
+                    {% for sponsor in platinumSponsors %}
+                        <li class="partners__item">
+                            <a href="{{ sponsor.site }}" rel="nofollow" target="_blank" class="partners__link">
+                                <span class="partners__logo" style="background-image:url('/uploads/images/sponsors/{{ sponsor.image }}')"></span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                </div>
+            {% endif %}
+        {% if goldSponsors %}
+        <div class="partners__title">Золоті Партнери</div>
+        <ul class="partners__items">
+            {% for sponsor in goldSponsors %}
+                <li class="partners__item">
+                    <a href="{{ sponsor.site }}" rel="nofollow" target="_blank" class="partners__link">
+                        <span class="partners__logo" style="background-image:url('/uploads/images/sponsors/{{ sponsor.image }}')"></span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        {% if silverSponsors %}
+            <div class="partners__title">Срібні Партнери</div>
+            <ul class="partners__items">
+                {% for sponsor in silverSponsors %}
+                    <li class="partners__item">
+                        <a href="{{ sponsor.site }}" rel="nofollow" target="_blank" class="partners__link">
+                            <span class="partners__logo" style="background-image:url('/uploads/images/sponsors/{{ sponsor.image }}')"></span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+        {% if bronzeSponsors %}
+            <div class="partners__title">Бронзові Партнери</div>
+            <ul class="partners__items">
+                {% for sponsor in bronzeSponsors %}
+                    <li class="partners__item">
+                        <a href="{{ sponsor.site }}" rel="nofollow" target="_blank" class="partners__link">
+                            <span class="partners__logo" style="background-image:url('/uploads/images/sponsors/{{ sponsor.image }}')"></span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+</section>
+
+<!--END partners-->
+{% endblock %}

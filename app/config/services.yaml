@@ -2,6 +2,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    app.path.speaker_images: /uploads/images/speakers
+    app.path.event_images: /uploads/images/ivents
+    app.path.sponsor_images: /uploads/images/sponsors
 
 services:
     # default configuration for services in *this* file
@@ -24,5 +27,108 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    ivory_ck_editor.renderer.json_builder:
+        class: Ivory\JsonBuilder\JsonBuilder
+        public: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+ivory_ck_editor:
+    input_sync: true
+    default_config: vase_config
+    configs:
+        vase_config:
+            toolbar:
+                - { property: 'description', type: 'ckeditor', type_options: { 'config': { 'toolbar': [ { name: 'styles', items: ['Bold', 'Italic', 'BulletedList', 'Link'] } ] } } }
+
+easy_admin:
+    site_name: 'PHP Framework Days 2018'
+    entities:
+        MainEvent:
+            class: App\Entity\MainEvent
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'description', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType', type_options: { config_name: 'vase_config' } }
+                    - { property: 'date' }
+        Speaker:
+            class: App\Entity\Speaker
+            list:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'name' }
+                    - { property: 'company' }
+                    - { property: 'position' }
+                    - { property: 'imageFile', type: 'vich_image' }
+            show:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'name' }
+                    - { property: 'company' }
+                    - { property: 'position' }
+                    - { property: 'imageFile', type: 'vich_image' }
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'company' }
+                    - { property: 'position' }
+                    - { property: 'imageFile', type: 'vich_image' }
+        Event:
+            class: App\Entity\Event
+        Day:
+            class: App\Entity\Day
+        Room:
+            class: App\Entity\Room
+        Type:
+            class: App\Entity\Type
+        Photo:
+            class: App\Entity\Photo
+            list:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+            show:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+        Sponsor:
+            class: App\Entity\Sponsor
+            list:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'name' }
+                    - { property: 'site' }
+                    - { property: 'type' }
+                    - { property: 'imageFile', type: 'vich_image' }
+            show:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'name' }
+                    - { property: 'site' }
+                    - { property: 'type' }
+                    - { property: 'imageFile', type: 'vich_image' }
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'site' }
+                    - { property: 'type' }
+                    - { property: 'imageFile', type: 'vich_image' }
+        SponsorType:
+            class: App\Entity\SponsorType
+        Ticket:
+            class: App\Entity\Ticket
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        speaker_images:
+            uri_prefix:         '%app.path.speaker_images%'
+            upload_destination: '%kernel.root_dir%/../public/uploads/images/speakers'
+        event_images:
+            uri_prefix:         '%app.path.event_images%'
+            upload_destination: '%kernel.root_dir%/../public/uploads/images/ivents'
+        sponsor_images:
+            uri_prefix:         '%app.path.sponsor_images%'
+            upload_destination: '%kernel.root_dir%/../public/uploads/images/sponsors'

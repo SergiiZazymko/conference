@@ -1,0 +1,21 @@
+{% extends('base.html.twig') %}
+
+{% block title %} Error 404 {% endblock %}
+
+{% block body %}
+
+    <section class="error">
+        <div class="container container--sm">
+            <h2 class="h2 error__title">Помилка 404. Сторінка не знайдена</h2>
+            <p class="error__text">Можливо, такої сторінки більше не існує або вона була видалена. <br />Будь ласка, перевірте коректність посилання.</p>
+            <div class="numbered-list-caption">
+                Ви можете:
+            </div>
+            <ul class="numbered-list">
+                <li class="numbered-list__item"><a href="/" class="numbered-list__link">Повернутись на головну</a></li>
+                <li class="numbered-list__item">Перейти в будь-який розділ сайту через меню</li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <!--BEGIN event-header-->
+    <section class="event-header" style="background-color: #7586D2;">
+        <div class="container">
+            <div class="event-header__box">
+                <h1 class="event-header__title">{{ event.name }}</h1>
+                {% if (event.speaker) %}
+                    <div class="event-header__description">{{ event.speaker }}</div>
+                {% endif %}
+                <div class="event-header__description">{{ event.room }}</div>
+                <div class="event-header__description">{{ event.type }}</div>
+                <div class="event-header__details">
+                    <div class="event-header__details-left">
+                        <time datetime="2018-06-10" class="event-header__date">Початок: {{ event.start.format('Y-m-d H:i') }}</time>
+                        <time datetime="2018-06-10" class="event-header__date">Тривалість: {{ event.durability }} хвилин</time>
+                        <time datetime="2018-06-10" class="event-header__date">Дні:</time>
+                        {% for day in event.days %}
+                            <time datetime="2018-06-10" class="event-header__date"> {{ day }}</time>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="event-header__action">
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!--END event-header-->
+{% endblock %}

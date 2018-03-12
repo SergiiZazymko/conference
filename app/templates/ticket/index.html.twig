@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for ticket in tickets %}
+        <div class="container">
+            <br><br>
+            <h1>{{ ticket.name }}</h1>
+            <p>{{ ticket.description }}</p>
+            <p>{{ ticket.price }} &#8372; </p>
+            <br><br>
+            <hr>
+        </div>
+{% endfor %}
+{% endblock %}

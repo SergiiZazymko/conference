@@ -72,6 +72,18 @@
       <path value="$PROJECT_DIR$/app/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/app/vendor/egeloen/json-builder" />
       <path value="$PROJECT_DIR$/app/vendor/egeloen/ckeditor-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/app/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/app/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/app/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/kms/froala-editor-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/app/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/app/vendor/behat/transliterator" />
+      <path value="$PROJECT_DIR$/app/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/kohkimakimoto/adminer-cli" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
