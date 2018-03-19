@@ -60,6 +60,7 @@ easy_admin:
                     - { property: 'name' }
                     - { property: 'company' }
                     - { property: 'position' }
+                    - { property: 'event' }
                     - { property: 'imageFile', type: 'vich_image' }
             show:
                 fields:
@@ -67,12 +68,14 @@ easy_admin:
                     - { property: 'name' }
                     - { property: 'company' }
                     - { property: 'position' }
+                    - { property: 'event' }
                     - { property: 'imageFile', type: 'vich_image' }
             form:
                 fields:
                     - { property: 'name' }
                     - { property: 'company' }
                     - { property: 'position' }
+                    - { property: 'event' }
                     - { property: 'imageFile', type: 'vich_image' }
         Event:
             class: App\Entity\Event
@@ -86,9 +89,11 @@ easy_admin:
             class: App\Entity\Photo
             list:
                 fields:
+                    - { property: 'id' }
                     - { property: 'imageFile', type: 'vich_image' }
             show:
                 fields:
+                    - { property: 'id' }
                     - { property: 'imageFile', type: 'vich_image' }
             form:
                 fields:

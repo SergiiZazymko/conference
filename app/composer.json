@@ -28,6 +28,7 @@
         "vich/uploader-bundle": "^1.8"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "kohkimakimoto/adminer-cli": "^0.9.0",
         "symfony/debug-pack": "^1.0",
         "symfony/dotenv": "^4.0",

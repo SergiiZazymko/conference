@@ -84,6 +84,8 @@
       <path value="$PROJECT_DIR$/app/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/app/vendor/vich/uploader-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/kohkimakimoto/adminer-cli" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/data-fixtures" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
