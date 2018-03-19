@@ -183,8 +183,8 @@ class App extends Fixture
         $event->setSpeaker($this->speakerRepository->find(1));
         $event->setStart(new \DateTime('2018-06-10 10:00:00'));
         $event->setDurability(120);
-//        $event->addDay($this->dayRepository->find(1));
-//        $event->addDay($this->dayRepository->find(3));
+        $event->addDay($this->dayRepository->findByName('Перший')[0]);
+        $event->addDay($this->dayRepository->findByName('Другий')[0]);
         $event->setRoom($this->roomRepository->find(1));
         $manager->persist($event);
 
@@ -195,7 +195,7 @@ class App extends Fixture
         $event->setSpeaker($this->speakerRepository->find(3));
         $event->setStart(new \DateTime('2018-06-12 11:00:00'));
         $event->setDurability(40);
-//        $event->addDay($this->dayRepository->find(3));
+        $event->addDay($this->dayRepository->findByName('Третій')[0]);
         $event->setRoom($this->roomRepository->find(3));
         $manager->persist($event);
 
@@ -206,9 +206,9 @@ class App extends Fixture
         $event->setSpeaker($this->speakerRepository->find(2));
         $event->setStart(new \DateTime('2018-06-10 13:00:00'));
         $event->setDurability(180);
-//        $event->addDay($this->dayRepository->find(1));
-//        $event->addDay($this->dayRepository->find(2));
-//        $event->addDay($this->dayRepository->find(3));
+        $event->addDay($this->dayRepository->findByName('Перший')[0]);
+        $event->addDay($this->dayRepository->findByName('Другий')[0]);
+        $event->addDay($this->dayRepository->findByName('Третій')[0]);
         $event->setRoom($this->roomRepository->find(5));
         $manager->persist($event);
 
@@ -218,7 +218,7 @@ class App extends Fixture
         $event->setType($this->typeRepository->find(1));
         $event->setStart(new \DateTime('2018-06-10 09:00:00'));
         $event->setDurability(30);
-//        $event->addDay($this->dayRepository->find(1));
+        $event->addDay($this->dayRepository->findByName('Перший')[0]);
         $event->setRoom($this->roomRepository->find(3));
         $manager->persist($event);
 
@@ -228,7 +228,7 @@ class App extends Fixture
         $event->setType($this->typeRepository->find(4));
         $event->setStart(new \DateTime('2018-06-12 18:00:00'));
         $event->setDurability(30);
-//        $event->addDay($this->dayRepository->find(3));
+        $event->addDay($this->dayRepository->findByName('Третій')[0]);
         $event->setRoom($this->roomRepository->find(4));
         $manager->persist($event);
 
@@ -238,7 +238,7 @@ class App extends Fixture
         $event->setType($this->typeRepository->find(5));
         $event->setStart(new \DateTime('2018-06-12 19:00:00'));
         $event->setDurability(180);
-//        $event->addDay($this->dayRepository->find(3));
+        $event->addDay($this->dayRepository->findByName('Третій')[0]);
         $event->setRoom($this->roomRepository->find(2));
         $manager->persist($event);
 
